@@ -1,3 +1,355 @@
 @mainColor: blue;
-
 @import "pizza/pizza-card";
+
+@paddingForWrap:300px;
+@enterButtonHeight:34px;
+
+
+
+.body{
+  min-width: 512px!important;
+}
+
+
+.buyPannel{
+  opacity: 0.5;
+  position:fixed;
+  right:0;
+  top:0;
+  height: 100%;
+  width:@paddingForWrap;
+  background: #e7e7e7;
+  opacity: 0.5;
+}
+
+
+.wrap {
+  min-width: 512px;
+  padding-right: @paddingForWrap;
+  padding-top:75px;
+}
+
+.myContainer{
+
+  margin: auto;
+  max-width: 920px;
+}
+
+.row{
+    margin-left: 20px;
+  margin-right: 20px;
+
+}
+
+.enterPannel{
+  z-index: 1;
+  opacity:0.8;
+  color: #d9d9d9;
+  width: ~"calc(100% - 300px)";
+  padding-left:75px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  background: black;
+  position:fixed;
+  min-height:52px;
+
+
+  .upperEnter{
+
+    border-bottom: 1px solid white;
+
+
+    .contactNumber{
+      line-height: @enterButtonHeight;
+      display:inline-block;
+      min-width: 100px;
+    }
+
+    .freeDelivery{
+      line-height: @enterButtonHeight;
+      display:inline-block;
+      font-size: 13px;
+      margin-left: 20px;
+      min-width: 170px;
+    }
+
+    .twentyFour{
+      line-height: @enterButtonHeight;
+      display:inline-block;
+      margin-left: 20px;
+      font-size: 10px;
+      min-width: 140px;
+    }
+
+    .enterButton{
+
+
+      color:white;
+      display:block;
+      float:right;
+      min-width: 60px;
+      margin-top:1px;
+      margin-bottom: 1px;
+
+    }
+  }
+
+
+  .lowerEnter{
+
+    color:white;
+  }
+}
+
+
+.clearfix::after	{
+  visibility:	hidden;
+  display:	block;
+  content:	"";
+  height:	0;
+  clear:	both;
+}
+
+
+.buyPannel{
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.topPurchase{
+  background: white;
+  padding-top:15.7px;
+  padding-bottom: 15.7px;
+
+  display:flex;
+  justify-content: space-around;
+
+  .clearList{
+    font-size:10px;
+    align-self: center;
+    cursor: pointer;
+  }
+
+  .whatsLeft{
+    .amountLeft {
+      font-size: 14px;
+    }
+
+
+    span{
+      font-size: 18px;
+    }
+
+  }
+}
+
+.amountLeft{
+  display: inline-block;
+  border-radius:50%;
+  background: yellow;
+  width:12px;
+  height:12px;
+  font-size: 10px;
+}
+
+
+.boughtPizza{
+  border-bottom: 1px solid black;
+  padding:15px;
+
+  .menu{
+    display: flex;
+    justify-content: space-between;
+    max-width: 200px;
+  }
+
+}
+
+.buyBlock{
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  position: fixed;
+  width: @paddingForWrap;
+  background: white;
+  right:0;
+  bottom: 0;
+  padding:15px;
+
+
+  .textS{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  span{
+    display:block;
+
+  }
+
+
+
+
+  .buyButton{
+    text-align: center;
+    padding: 10px 0;
+
+    button{
+      width:200px;
+    }
+  }
+
+  
+}
+
+.iconSmall{
+ font-size:10px;
+
+}
+
+.big{
+
+  font-size: 20px;
+}
+
+.header{
+  text-align: center;
+}
+
+.headerWrapper{
+  width: 550px;
+  margin: auto;
+  padding: 10px 0;
+
+}
+
+footer{
+  height: 100px;
+  width: ~"calc(100% - 300px)";
+  border-top: 1px solid black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media	(max-width:	1232px) {
+  .buyPannel {
+    width: @paddingForWrap - 75px;
+  }
+
+  .buyBlock{
+    width:225px;
+  }
+  .enterPannel {
+    width: ~"calc(100% - 225px)";
+  }
+
+  .wrap {
+    padding-right: @paddingForWrap - 75px;
+  }
+
+  .boughtPizza {
+    .menu {
+      max-width: 160px;
+    }
+  }
+
+  .butSmall{
+    button{
+      width:60px;
+      height: 30px;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
+  .topPurchase{
+    .clearList{
+      font-size:8px;
+
+    }
+
+    .whatsLeft{
+      .amountLeft {
+        font-size: 10px;
+      }
+
+      span{
+        font-size: 15px;
+      }
+    }
+  }
+
+  footer{
+    width: ~"calc(100% - 225px)";
+  }
+
+
+
+}
+
+
+
+@media	(max-width:	991px) {
+
+  .butSmall{
+    button{
+      width:70.79px;
+      height: 34px;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+
+
+
+  .freeDelivery{
+    display:none !important;
+  }
+
+
+
+  .topPurchase{
+    .clearList{
+      font-size:8px;
+
+    }
+
+    .whatsLeft{
+      .amountLeft {
+        font-size: 10px;
+      }
+
+      span{
+        font-size: 15px;
+      }
+    }
+  }
+
+  .headerWrapper {
+    width: 325px;
+  }
+
+
+
+}
+
+@media	(max-width:	768px) {
+  .buyButton{
+    height: 30px;
+
+  }
+
+
+  .twentyFour{
+    display: none !important;
+  }
+
+}
