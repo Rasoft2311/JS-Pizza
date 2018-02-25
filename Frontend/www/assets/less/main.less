@@ -10,6 +10,71 @@
   min-width: 512px!important;
 }
 
+.pizzaKMA{
+width:65px;
+  height:57px;
+  background: rgb(233,149,0);
+  position:fixed;
+  top:0;
+  left:4px;
+  z-index: 2;
+
+  div{
+    text-align: center;
+    text-transform: uppercase;
+    padding:5px 10px;
+    font-size: 14px;
+    color: white;
+
+  }
+
+
+  img{
+    transform: scale(0.65,0.75) rotateX(180deg);
+    position: fixed;
+    top: 55px;
+    left:-14px;
+  }
+}
+
+.discount{
+  width:65px;
+  height:68px;
+  background: rgb(233,149,0);
+  position:fixed;
+  bottom:0;
+  left:4px;
+  z-index: 2;
+
+  div{
+    text-align: center;
+    text-transform: uppercase;
+    padding:5px 10px;
+    font-size: 10px;
+    color: white;
+    border-bottom: 1px solid black;
+  }
+
+.inDisc{
+  border-bottom: 0;
+  text-align: center;
+  font-size: 12px;
+  padding-top: 0px;
+
+
+}
+
+
+  .discountImg{
+    transform: scale(0.65,0.75);
+    position: fixed;
+    bottom: 65px;
+    left:-14px;
+
+
+  }
+}
+
 
 .buyPannel{
   opacity: 0.5;
@@ -102,13 +167,7 @@
 }
 
 
-.clearfix::after	{
-  visibility:	hidden;
-  display:	block;
-  content:	"";
-  height:	0;
-  clear:	both;
-}
+
 
 
 .buyPannel{
@@ -116,7 +175,7 @@
 }
 
 .topPurchase{
-  background: white;
+  background: #e7e7e7;
   padding-top:15.7px;
   padding-bottom: 15.7px;
 
@@ -142,6 +201,7 @@
   }
 }
 
+
 .amountLeft{
   display: inline-block;
   border-radius:50%;
@@ -155,11 +215,51 @@
 .boughtPizza{
   border-bottom: 1px solid black;
   padding:15px;
+  position: relative;
+  background: white;
+
+  .smallPizza{
+    position:absolute;
+    right:-217px;
+    top:-171px;
+    transform: scale(0.2, 0.2);
+  }
+
+  .pizzaName{
+    font-size:17px;
+    color: orange;
+  }
+
+  button{
+    border-radius:50%;
+    width:25px;
+    height: 25px;
+  }
+
+  .minus{
+    background: red;
+    color:white;
+  }
+  
+  .plus{
+    background: green;
+    color:white;
+  }
+
+  .delete{
+    background: #b9b9b9;
+    color:yellow;
+  }
 
   .menu{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     max-width: 200px;
+
+    span{
+      color:black;
+    }
   }
 
 }
