@@ -6,8 +6,8 @@
 
 
 
-.body{
-  min-width: 512px!important;
+body{
+  min-width: 600px!important;
 }
 
 .pizzaKMA{
@@ -59,7 +59,7 @@ width:65px;
   border-bottom: 0;
   text-align: center;
   font-size: 12px;
-  padding-top: 0px;
+  padding-top: 0;
 
 
 }
@@ -77,14 +77,13 @@ width:65px;
 
 
 .buyPannel{
-  opacity: 0.5;
+  min-width: 300px;
   position:fixed;
   right:0;
   top:0;
   height: 100%;
   width:@paddingForWrap;
   background: #e7e7e7;
-  opacity: 0.5;
 }
 
 
@@ -107,6 +106,7 @@ width:65px;
 }
 
 .enterPannel{
+  min-width: 300px;
   z-index: 1;
   opacity:0.8;
   color: #d9d9d9;
@@ -227,7 +227,7 @@ width:65px;
 
   .pizzaName{
     font-size:17px;
-    color: orange;
+    color:orange;
   }
 
   button{
@@ -340,63 +340,6 @@ footer{
 
 
 
-@media	(max-width:	1232px) {
-  .buyPannel {
-    width: @paddingForWrap - 75px;
-  }
-
-  .buyBlock{
-    width:225px;
-  }
-  .enterPannel {
-    width: ~"calc(100% - 225px)";
-  }
-
-  .wrap {
-    padding-right: @paddingForWrap - 75px;
-  }
-
-  .boughtPizza {
-    .menu {
-      max-width: 160px;
-    }
-  }
-
-  .butSmall{
-    button{
-      width:60px;
-      height: 30px;
-      font-size: 12px;
-      text-align: center;
-    }
-  }
-
-  .topPurchase{
-    .clearList{
-      font-size:8px;
-
-    }
-
-    .whatsLeft{
-      .amountLeft {
-        font-size: 10px;
-      }
-
-      span{
-        font-size: 15px;
-      }
-    }
-  }
-
-  footer{
-    width: ~"calc(100% - 225px)";
-  }
-
-
-
-}
-
-
 
 @media	(max-width:	991px) {
 
@@ -415,24 +358,6 @@ footer{
     display:none !important;
   }
 
-
-
-  .topPurchase{
-    .clearList{
-      font-size:8px;
-
-    }
-
-    .whatsLeft{
-      .amountLeft {
-        font-size: 10px;
-      }
-
-      span{
-        font-size: 15px;
-      }
-    }
-  }
 
   .headerWrapper {
     width: 325px;
