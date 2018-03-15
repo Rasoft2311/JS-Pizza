@@ -17,25 +17,80 @@ function getIngredientsArray(pizza) {
 }
 
    %>
-<div class="col-md-6 col-lg-4 pizza-card">
-    <div class="thumbnail">
-        <img class="pizza-icon" src="<%= pizza.icon %>" alt="Pizza">
+
+
+<div class=" col-md-6 col-lg-4  ">
+    <div class="thumbnail pizza-card">
+        <img src="<%= pizza.icon %>">
 
         <% if(pizza.is_new) { %>
-        <span class="label label-danger">Нова</span>
+        <span class="label label-danger lilabel">Нова</span>
         <% } else if(pizza.is_popular) {%>
-        <span class="label label-success">Популярна</span>
+        <span class="label label-success lilabel">Популярна</span>
         <% } %>
 
-        <div class="caption">
-            <span class="title"><%= pizza.title %></span>
-            <div class="type"><%= pizza.type %></div>
-            <div class="description">
-                <%= getIngredientsArray(pizza).join(", ") %>
-            </div>
-        </div>
 
-        <!-- Перед тим щоб показати кнопку необхідно переконатися, що піца має великий розмір -->
-        <button class="btn btn-primary buy-big">Купити велику</button>
+        <div class="caption">
+            <h3><%= pizza.title %> </h3>
+
+            <span class="iconSmall "><%= pizza.type %></span>
+
+            <p><%= getIngredientsArray(pizza).join(", ") %></p>
+
+
+            <div class="row pizzaInner">
+               <%if("small_size" in pizza){%>
+                <div class="col-xs-6 col-sm-6 col-md-6 ">
+                    <span class="glyphicon glyphicon-ban-circle iconSmall" aria-hidden="true"></span>
+                    <span class="iconSmall"><%= pizza.small_size.size %></span>
+                </div>
+                <%}%>
+                <%if("big_size" in pizza){%>
+                <div class="col-xs-6 col-sm-6 col-md-6 ">
+                    <span class="glyphicon glyphicon-ban-circle iconSmall" aria-hidden="true"></span>
+                    <span class="iconSmall"><%= pizza.big_size.size %></span>
+                </div>
+                <%}%>
+            </div>
+            <div class="row pizzaInner">
+                <%if("small_size" in pizza){%>
+                <div class="col-xs-6 col-sm-6 col-md-6 ">
+                    <span class="glyphicon glyphicon-modal-window iconSmall" aria-hidden="true"></span>
+                    <span><%= pizza.small_size.weight %></span>
+                </div>
+                <%}%>
+                <%if("big_size" in pizza){%>
+                <div class="col-xs-6 col-sm-6 col-md-6 ">
+                    <span class="glyphicon glyphicon-modal-window iconSmall" aria-hidden="true"></span>
+                    <span><%= pizza.big_size.weight %></span>
+                </div>
+                <%}%>
+            </div>
+            <div class="row pizzaInner">
+                <%if("small_size" in pizza){%> <div class="col-xs-6 col-sm-6 col-md-6 "><br/></div><%}%>
+                <%if("big_size" in pizza){%> <div class="col-xs-6 col-sm-6 col-md-6 "><br/></div><%}%>
+            </div>
+            <div class="row pizzaInner">
+                <%if("small_size" in pizza){%>  <div class="col-xs-6 col-sm-6 col-md-6 money big "><%= pizza.small_size.price %></div><%}%>
+                <%if("big_size" in pizza){%><div class="col-xs-6 col-sm-6 col-md-6 money  big"><%= pizza.big_size.price %></div><%}%>
+            </div>
+            <div class="row pizzaInner">
+                <%if("small_size" in pizza){%><div class="col-xs-6 col-sm-6 col-md-6 ">грн.</div><%}%>
+                <%if("big_size" in pizza){%><div class="col-xs-6 col-sm-6 col-md-6 ">грн.</div><%}%>
+            </div>
+            <div class="row pizzaInner ">
+                <%if("small_size" in pizza){%>
+                <div class="col-xs-6 col-sm-6 col-md-6 butSmall  ">
+                    <button class="btn btn-warning buy-small " >Купити </button>
+                </div>
+                <%}%>
+                <%if("big_size" in pizza){%>
+                <div class="col-xs-6 col-sm-6 col-md-6 butSmall">
+                    <button class="btn btn-warning buy-big">Купити </button>
+                </div>
+                <%}%>
+            </div>
+
+        </div>
     </div>
 </div>

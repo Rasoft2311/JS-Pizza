@@ -11,5 +11,29 @@ $(function(){
     PizzaCart.initialiseCart();
     PizzaMenu.initialiseMenu();
 
+    $(".allP").click(function () {
+        filterPizza(this.text());
+    });
+
+    $(".meatP").click(function () {
+
+    });
+    $(".pineappleP").click(function () {
+
+    });
+
+    $(".mushP").click(function () {
+
+    });
+
+    $(".waterP").click(function () {
+
+    });
+
+    $(".vegaP").click(function () {
+
+    });
+
+
 
 });
