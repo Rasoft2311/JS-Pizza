@@ -173,5 +173,7 @@ var pizza_info = [
         }
     }
 ];
+//exports.PizzaList = pizza_info;
+//exports.MyValue = 145;
 
 module.exports = pizza_info;

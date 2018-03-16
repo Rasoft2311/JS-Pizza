@@ -4,6 +4,7 @@
 var Templates = require('../Templates');
 var PizzaCart = require('./PizzaCart');
 var Pizza_List = require('../Pizza_List');
+console.log(Pizza_List);
 
 //HTML едемент куди будуть додаватися піци
 var $pizza_list = $("#pizza_list");
