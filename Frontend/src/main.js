@@ -11,28 +11,51 @@ $(function(){
     PizzaCart.initialiseCart();
     PizzaMenu.initialiseMenu();
 
-    $(".allP").click(function () {
-        filterPizza(this.text());
-    });
+    var previous = $(".all");
 
-    $(".meatP").click(function () {
-
-    });
-    $(".pineappleP").click(function () {
-
-    });
-
-    $(".mushP").click(function () {
+    $(".all").click(function () {
+        previous.removeClass("active");
+        PizzaMenu.filterPizza("all");
+        previous = $(".all");
+        $(this).addClass("active");
 
     });
 
-    $(".waterP").click(function () {
+    $(".meat").click(function () {
+        previous.removeClass("active");
+        PizzaMenu.filterPizza("meat");
+        previous = $(".meat");
+        $(this).addClass("active");
 
     });
-
-    $(".vegaP").click(function () {
-
+    $(".pineapple").click(function () {
+        previous.removeClass("active");
+        PizzaMenu.filterPizza("pineapple");
+        previous = $(".pineapple");
+        $(this).addClass("active");
     });
+
+    $(".mushroom").click(function () {
+        previous.removeClass("active");
+        PizzaMenu.filterPizza("mushroom");
+        previous = $(".mushroom");
+        $(this).addClass("active");
+    });
+
+    $(".ocean").click(function () {
+        previous.removeClass("active");
+        PizzaMenu.filterPizza("ocean");
+        previous = $(".ocean");
+        $(this).addClass("active");
+    });
+
+    $(".vega").click(function () {
+        previous.removeClass("active");
+        PizzaMenu.filterPizza("vega");
+        previous = $(".vega");
+        $(this).addClass("active");
+    });
+
 
 
 

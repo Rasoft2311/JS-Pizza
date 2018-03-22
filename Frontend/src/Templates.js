@@ -3,7 +3,6 @@
  */
 var fs = require('fs');
 var ejs = require('ejs');
-exports.Small = ejs.compile('<div class="a"><%= value %></div>')
 
 exports.PizzaMenu_OneItem = ejs.compile(fs.readFileSync('./Frontend/templates/PizzaMenu_OneItem.ejs', "utf8"));
 

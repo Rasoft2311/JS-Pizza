@@ -12,6 +12,8 @@ var PizzaSize = {
 //Змінна в якій зберігаються перелік піц в кошику
 var Cart = [];
 
+var $sum = $(".sum");
+
 //HTML едемент куди будуть додаватися піци
 var $cart = $(".cart");
 
@@ -34,6 +36,11 @@ function addToCart(pizza, size) {
         });
     }
 
+    var sum = +$sum.text()+ pizza[size].price;
+        $sum.text(sum);
+
+
+
     //Оновити вміст кошика на сторінці
     updateCart();
 }
@@ -44,14 +51,16 @@ function removeFromCart(cart_item) {
         if(Cart[i].pizza.id===cart_item.pizza.id&&Cart[i].size===cart_item.size)Cart.splice(i,1);
     }
 
+
     //Після видалення оновити відображення
     updateCart();
 }
 
 function initialiseCart() {
-    //Фукнція віпрацьвуватиме при завантаженні сторінки
-    //Тут можна наприклад, зчитати вміст корзини який збережено в Local Storage то показати його
-    //TODO: ...
+    Cart = JSON.parse(localStorage.getItem("nodes"));
+    if(Cart===null){
+        Cart=[];
+    }
 
     updateCart();
 }
@@ -75,16 +84,22 @@ function updateCart() {
         var $node = $(html_code);
 
         $node.find(".plus").click(function(){
+            var sum = +$sum.text()+ cart_item.pizza[cart_item.size].price;
+            $sum.text(sum);
             //Збільшуємо кількість замовлених піц
             cart_item.quantity += 1;
+
 
             //Оновлюємо відображення
             updateCart();
         });
 
         $node.find(".minus").click(function(){
+            var sum = +$sum.text()- cart_item.pizza[cart_item.size].price;
+            $sum.text(sum);
             if(cart_item.quantity===1)removeFromCart(cart_item);
             else cart_item.quantity -= 1;
+
 
 
             //Оновлюємо відображення
@@ -92,7 +107,10 @@ function updateCart() {
         });
 
         $node.find(".delete").click(function(){
+            var sum = +$sum.text()- cart_item.pizza[cart_item.size].price*cart_item.quantity;
+            $sum.text(sum);
             removeFromCart(cart_item);
+
 
             //Оновлюємо відображення
             updateCart();
@@ -101,9 +119,18 @@ function updateCart() {
         $cart.append($node);
     }
 
+    localStorage.clear();
+    localStorage.setItem("nodes", JSON.stringify(Cart));
+
     Cart.forEach(showOnePizzaInCart);
 
 }
+
+$(".clearList").click(function () {
+    Cart=[];
+    $sum.text("");
+    updateCart();
+});
 
 exports.removeFromCart = removeFromCart;
 exports.addToCart = addToCart;
