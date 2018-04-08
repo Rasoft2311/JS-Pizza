@@ -61,6 +61,10 @@ function initialiseCart() {
     if(Cart===null){
         Cart=[];
     }
+    var suma = 0;
+    Cart.forEach(function (value) {
+        suma+=value.pizza[value.size].price*value.quantity });
+    $sum.text(suma);
 
     updateCart();
 }
@@ -124,7 +128,11 @@ function updateCart() {
 
     Cart.forEach(showOnePizzaInCart);
 
+
+
 }
+
+
 
 $(".clearList").click(function () {
     Cart=[];

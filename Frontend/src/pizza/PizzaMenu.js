@@ -3,7 +3,7 @@
  */
 var Templates = require('../Templates');
 var PizzaCart = require('./PizzaCart');
-var Pizza_List = require('../Pizza_List');
+var Pizza_List = null;
 console.log(Pizza_List);
 
 //HTML едемент куди будуть додаватися піци
@@ -68,7 +68,8 @@ function filterPizza(filter) {
     showPizzaList(pizza_shown);
 }
 
-function initialiseMenu() {
+function initialiseMenu(pizzas) {
+    Pizza_List=pizzas;
     //Показуємо усі піци
     showPizzaList(Pizza_List)
 }

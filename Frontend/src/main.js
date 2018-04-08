@@ -6,10 +6,18 @@ $(function(){
     //This code will execute when the page is ready
     var PizzaMenu = require('./pizza/PizzaMenu');
     var PizzaCart = require('./pizza/PizzaCart');
-    var Pizza_List = require('./Pizza_List');
+    var API = require('./API');
+
 
     PizzaCart.initialiseCart();
-    PizzaMenu.initialiseMenu();
+    API.getPizzaList(function (err,pizzaList) {
+        if(err)alert("Failed to load pizzas");
+        else{
+            PizzaMenu.initialiseMenu(pizzaList);
+        }
+
+    });
+
 
     var previous = $(".all");
 
@@ -54,6 +62,10 @@ $(function(){
         PizzaMenu.filterPizza("vega");
         previous = $(".vega");
         $(this).addClass("active");
+    });
+
+    $(".purchase").click(function () {
+        //$(".menu").toggleClass("woutbut");
     });
 
 
