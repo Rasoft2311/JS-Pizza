@@ -3,6 +3,7 @@
  */
 
 $(function(){
+    var GoogleMaps=require("./GoogleMaps");
     //This code will execute when the page is ready
     var PizzaMenu = require('./pizza/PizzaMenu');
     var PizzaCart = require('./pizza/PizzaCart');
@@ -64,9 +65,19 @@ $(function(){
         $(this).addClass("active");
     });
 
-    $(".purchase").click(function () {
-        //$(".menu").toggleClass("woutbut");
+
+    $(".createOrder").click(function () {
+        var name = $("#inputName").val();
+        var phone = $("#inputPhone").val();
+        var adress = $("#inputAdress").val();
+        var pizzas = PizzaCart.getPizzaInCart();
+
+        API.createOrder({name:name, phone:phone, adress:adress, pizzas:pizzas},function (err, data) {
+            alert(JSON.stringify(data));
+        });
+
     });
+
 
 
 
