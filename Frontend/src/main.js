@@ -10,11 +10,14 @@ $(function(){
     var API = require('./API');
 
 
+
+
     PizzaCart.initialiseCart();
     API.getPizzaList(function (err,pizzaList) {
         if(err)alert("Failed to load pizzas");
         else{
             PizzaMenu.initialiseMenu(pizzaList);
+
         }
 
     });
@@ -27,6 +30,7 @@ $(function(){
         PizzaMenu.filterPizza("all");
         previous = $(".all");
         $(this).addClass("active");
+        $(".whichPizzas").text("Усі піци");
 
     });
 
@@ -35,6 +39,7 @@ $(function(){
         PizzaMenu.filterPizza("meat");
         previous = $(".meat");
         $(this).addClass("active");
+        $(".whichPizzas").text("М'ясні піци");
 
     });
     $(".pineapple").click(function () {
@@ -42,6 +47,7 @@ $(function(){
         PizzaMenu.filterPizza("pineapple");
         previous = $(".pineapple");
         $(this).addClass("active");
+        $(".whichPizzas").text("З ананасами піци");
     });
 
     $(".mushroom").click(function () {
@@ -49,6 +55,7 @@ $(function(){
         PizzaMenu.filterPizza("mushroom");
         previous = $(".mushroom");
         $(this).addClass("active");
+        $(".whichPizzas").text("Грибні піци");
     });
 
     $(".ocean").click(function () {
@@ -56,6 +63,7 @@ $(function(){
         PizzaMenu.filterPizza("ocean");
         previous = $(".ocean");
         $(this).addClass("active");
+        $(".whichPizzas").text("З морепродуктами піци");
     });
 
     $(".vega").click(function () {
@@ -63,6 +71,7 @@ $(function(){
         PizzaMenu.filterPizza("vega");
         previous = $(".vega");
         $(this).addClass("active");
+        $(".whichPizzas").text("Вегетаріанські піци");
     });
 
 

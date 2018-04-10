@@ -128,6 +128,8 @@ function updateCart() {
 
     Cart.forEach(showOnePizzaInCart);
 
+    $(".pizzasInCart").text(Cart.length);
+
 
 
 }

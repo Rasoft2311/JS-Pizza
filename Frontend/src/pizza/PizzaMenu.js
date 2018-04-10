@@ -29,7 +29,12 @@ function showPizzaList(list) {
         $pizza_list.append($node);
     }
 
-    list.forEach(showOnePizza);
+    var amountOfPizzas=0;
+    list.forEach(function(pizza){
+        showOnePizza(pizza);
+        amountOfPizzas++;
+    });
+    $(".allP").text(amountOfPizzas);
 }
 
 function filterPizza(filter) {
