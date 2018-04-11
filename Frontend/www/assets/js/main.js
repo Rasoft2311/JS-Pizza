@@ -280,9 +280,23 @@ $(function(){
         var adress = $("#inputAdress").val();
         var pizzas = PizzaCart.getPizzaInCart();
 
-        API.createOrder({name:name, phone:phone, adress:adress, pizzas:pizzas},function (err, data) {
-            alert(JSON.stringify(data));
-        });
+        if (!$(".name-group").hasClass("has-success")) {
+            $(".name-help-block").css("display", "block");
+        }
+        if (!$(".phone-group").hasClass("has-success")) {
+            $(".phone-help-block").css("display", "block");
+        }
+        if (!($(".address-group").hasClass("has-success"))) {
+            $(".address-help-block").css("display", "block");
+        }
+
+        if($(".name-group").hasClass("has-success")&&$(".phone-group").hasClass("has-success")&&$(".address-group").hasClass("has-success")) {
+
+            API.createOrder({name: name, phone: phone, adress: adress, pizzas: pizzas}, function (err, data) {
+                alert(JSON.stringify(data));
+
+            });
+        }
 
     });
 
