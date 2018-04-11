@@ -18,7 +18,7 @@ var pizza_info = [
         small_size:{
             weight: 370,
             size: 30,
-            price: 99
+            price: 1
         },
         big_size:{
             weight: 660,

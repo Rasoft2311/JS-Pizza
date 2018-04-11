@@ -80,6 +80,7 @@ $(function(){
         var phone = $("#inputPhone").val();
         var adress = $("#inputAdress").val();
         var pizzas = PizzaCart.getPizzaInCart();
+        var money =$(".sum").text();
 
         if (!$(".name-group").hasClass("has-success")) {
             $(".name-help-block").css("display", "block");
@@ -93,7 +94,22 @@ $(function(){
 
         if($(".name-group").hasClass("has-success")&&$(".phone-group").hasClass("has-success")&&$(".address-group").hasClass("has-success")) {
 
-            API.createOrder({name: name, phone: phone, adress: adress, pizzas: pizzas}, function (err, data) {
+            API.createOrder({name: name, phone: phone, adress: adress, pizzas: pizzas, money:money}, function (err, data) {
+
+                LiqPayCheckout.init({
+                    data: data.data,
+                    signature: data.signature,
+                    embedTo: "#liqpay",
+                    mode: "popup"	//	embed	||	popup
+                }).on("liqpay.callback", function (data) {
+                    console.log(data.status);
+                    console.log(data);
+                }).on("liqpay.ready", function (data) {
+                }).on("liqpay.close", function (data) {
+                });
+
+
+
                 alert(JSON.stringify(data));
 
             });
