@@ -123,8 +123,8 @@ $(function(){
     $("#inputPhone").keyup (function () {
 
         var val = $(this).val();
-        var re = /0\d{9}/;
-        var re2 = /^\+380\d{7}$/;
+        var re = /0\d{9}$/;
+        var re2 = /^\+380\d{9}$/;
         if (!(re.test(val)||re2.test(val))) {
 
             $phone.addClass("has-error");
