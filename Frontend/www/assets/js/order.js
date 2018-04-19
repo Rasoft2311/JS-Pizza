@@ -1,3 +1,5 @@
+window.orderPage = true;
+
 $(function(){
 
 $(".menu").find("button").addClass("woutbut");
