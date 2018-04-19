@@ -76,28 +76,62 @@ $(function () {
         }
 
 
-        function	geocodeAddress(adress,	 callback)	{
+        function	geocodeAddress(address,	 callback)	{
             var geocoder	=	new	google.maps.Geocoder();
             geocoder.geocode({'address':	address},	function(results,	status)	{
                 if	(status	===	google.maps.GeocoderStatus.OK&&	results[0])	{
                     var coordinates	=	results[0].geometry.location;
                     callback(null,	coordinates);
                 }	else	{
-                    callback(new	Error("Can	not	find	the	adress"));
+                    console.log("Cant find adress");
                 }
             });
         }
 
-       /* $("#inputAdress").keyup (function () {
+        $("#inputAdress").keyup (function () {
             geocodeAddress($("#inputAdress").val(),function (err, coordinates) {
                 if(err)console.log("Cant find adress");
                 else {
                     calculateRoute(coordinates,point,function(err,time){
-                        console.log(time.duration.text);
+                        console.log("Not found");
                         if(!err)
                         {
-                            $(".timeToGet").text(time.duration.text);
+                            $(".address-group").addClass("has-success");
+                            $(".address-group").removeClass("has-error");
+                            $(".address-help-block").css("display","none");
                             $(".neededAdress").text($("#inputAdress").val());
+                            $(".timeToGet").text(time.duration.text);
+
+
+                            marker.setMap(null);
+                            directionsDisplay.set('directions', null);
+
+                            var request = {
+                                origin: coordinates, //точка старта
+                                destination: point, //точка финиша
+                                travelMode: google.maps.DirectionsTravelMode.DRIVING //режим прокладки маршрута
+                            };
+
+                            var directionsService =	new	google.maps.DirectionsService();
+                            directionsService.route(request, function(response, status) {
+                                if (status == google.maps.DirectionsStatus.OK) {
+                                    directionsDisplay.setDirections(response);
+                                }
+                            });
+
+                            directionsDisplay.setMap(map);
+
+
+
+
+
+                        }
+                        else{
+
+                            $(".address-group").addClass("has-error");
+                            $(".address-group").removeClass("has-success");
+                            $(".address-help-block").css("display","block");
+
                         }
 
                     });
@@ -106,7 +140,7 @@ $(function () {
                 }
             });
         });
-        */
+
 
         function	calculateRoute(A_latlng,	 B_latlng,	callback)	{
             var directionService =	new	google.maps.DirectionsService();
@@ -202,7 +236,7 @@ exports.PizzaCart_OneItem = ejs.compile("<div class=\"boughtPizza\">\r\n    <img
  */
 
 $(function(){
-    var GoogleMaps=require("./GoogleMaps");
+
     //This code will execute when the page is ready
     var PizzaMenu = require('./pizza/PizzaMenu');
     var PizzaCart = require('./pizza/PizzaCart');
@@ -314,7 +348,62 @@ $(function(){
             });
         }
 
+
+
+
     });
+
+    $("#inputPhone").keyup (function () {
+
+        var val = $(this).val();
+        var re = /0\d{9}/;
+        var re2 = /^\+380\d{7}$/;
+        if (!(re.test(val)||re2.test(val))) {
+
+            $phone.addClass("has-error");
+            $phone.removeClass("has-success");
+            $(".phone-help-block").css("display","block");
+        }
+        else{
+            $phone.addClass("has-success");
+            $phone.removeClass("has-error");
+            $(".phone-help-block").css("display","none");
+        }
+
+    });
+
+    $("#inputName").keyup (function () {
+        var val = $(this).val();
+        var re = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/u;
+        if (!re.test(val)) {
+
+            $name.addClass("has-error");
+            $name.removeClass("has-success");
+            $(".name-help-block").css("display","block");
+        }
+        else{
+            $name.addClass("has-success");
+            $name.removeClass("has-error");
+            $(".name-help-block").css("display","none");
+        }
+
+    });
+
+
+
+
+
+    if($(".enterPannel").attr("page")==="order"){
+
+        var GoogleMaps=require("./GoogleMaps");
+        $(".menu").find("button").addClass("woutbut");
+        $(".menu").addClass("orderMenu");
+        $(".clearList").remove();
+
+        var $phone =$(".phone-group");
+        var $name = $(".name-group");
+
+    }
 
 
 

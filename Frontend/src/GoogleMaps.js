@@ -33,28 +33,62 @@ $(function () {
         }
 
 
-        function	geocodeAddress(adress,	 callback)	{
+        function	geocodeAddress(address,	 callback)	{
             var geocoder	=	new	google.maps.Geocoder();
             geocoder.geocode({'address':	address},	function(results,	status)	{
                 if	(status	===	google.maps.GeocoderStatus.OK&&	results[0])	{
                     var coordinates	=	results[0].geometry.location;
                     callback(null,	coordinates);
                 }	else	{
-                    callback(new	Error("Can	not	find	the	adress"));
+                    console.log("Cant find adress");
                 }
             });
         }
 
-       /* $("#inputAdress").keyup (function () {
+        $("#inputAdress").keyup (function () {
             geocodeAddress($("#inputAdress").val(),function (err, coordinates) {
                 if(err)console.log("Cant find adress");
                 else {
                     calculateRoute(coordinates,point,function(err,time){
-                        console.log(time.duration.text);
+                        console.log("Not found");
                         if(!err)
                         {
-                            $(".timeToGet").text(time.duration.text);
+                            $(".address-group").addClass("has-success");
+                            $(".address-group").removeClass("has-error");
+                            $(".address-help-block").css("display","none");
                             $(".neededAdress").text($("#inputAdress").val());
+                            $(".timeToGet").text(time.duration.text);
+
+
+                            marker.setMap(null);
+                            directionsDisplay.set('directions', null);
+
+                            var request = {
+                                origin: coordinates, //точка старта
+                                destination: point, //точка финиша
+                                travelMode: google.maps.DirectionsTravelMode.DRIVING //режим прокладки маршрута
+                            };
+
+                            var directionsService =	new	google.maps.DirectionsService();
+                            directionsService.route(request, function(response, status) {
+                                if (status == google.maps.DirectionsStatus.OK) {
+                                    directionsDisplay.setDirections(response);
+                                }
+                            });
+
+                            directionsDisplay.setMap(map);
+
+
+
+
+
+                        }
+                        else{
+
+                            $(".address-group").addClass("has-error");
+                            $(".address-group").removeClass("has-success");
+                            $(".address-help-block").css("display","block");
+
                         }
 
                     });
@@ -63,7 +97,7 @@ $(function () {
                 }
             });
         });
-        */
+
 
         function	calculateRoute(A_latlng,	 B_latlng,	callback)	{
             var directionService =	new	google.maps.DirectionsService();
