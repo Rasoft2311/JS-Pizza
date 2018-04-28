@@ -1,6 +1,10 @@
 <div class="boughtPizza">
     <img class="smallPizza" src="<%= pizza.icon %>">
-    <div class="pizzaName"><%= pizza.title %> (<%= size %>)</div>
+    <%if(size==="small_size"){%>
+    <div class="pizzaName"><%= pizza.title %> (Мала)</div>
+    <%}if(size==="big_size"){%>
+    <div class="pizzaName"><%= pizza.title %> (Велика)</div>
+    <%}%>
     <div class="parameters">
         <span class="glyphicon glyphicon-ban-circle iconSmall" aria-hidden="true"></span>
         <span class="iconSmall"><%= pizza[size].size %></span>
