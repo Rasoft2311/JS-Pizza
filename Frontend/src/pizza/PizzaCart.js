@@ -93,7 +93,6 @@ function updateCart() {
             //Збільшуємо кількість замовлених піц
             cart_item.quantity += 1;
 
-
             //Оновлюємо відображення
             updateCart();
         });
@@ -121,6 +120,7 @@ function updateCart() {
         });
 
         $cart.append($node);
+        $node.find(".oneItemPrice").text(cart_item.quantity*cart_item.pizza[cart_item.size].price);
     }
 
     localStorage.clear();
